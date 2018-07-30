@@ -14,3 +14,6 @@ Requires virutalbox - If its already installed then not required
           Download kubectl from this location
           https://storage.googleapis.com/kubernetes-release/release/v1.11.0/bin/windows/amd64/kubectl.exe
           5. put kubectl in the same location as minikube
+          
+          
+6. minikube start
