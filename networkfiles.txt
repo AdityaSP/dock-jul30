@@ -1,0 +1,22 @@
+docker container run -d --name web03 adityaprabhakara/alpine_apache2:1.1
+docker network create web01_web02
+docker network inspect web01_web02
+docker network connect --help
+docker network connect web01_web02 web01
+docker inspect web01
+docker network disconnect bridge web01
+docker inspect web01
+docker network connect web01_web02 web02
+docker network disconnect bridge web02
+docker inspect web01
+docker exec web01 ping 172.18.0.3
+docker exec web01 ping web02
+docker exec web01 ping web03
+docker exec web01 ping web03
+docker network create web02_web03
+docker network connect web02_web03 web02
+docker network connect web02_web03 web03
+docker network disconnect bridge web03
+docker exec web01 ping web02
+docker exec web02 ping web03
+docker exec web01 ping web03
