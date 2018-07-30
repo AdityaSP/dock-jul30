@@ -1,0 +1,4 @@
+FROM alpine
+ENTRYPOINT ["ping", "-c", "4"]
+CMD ["google.com"]
+
