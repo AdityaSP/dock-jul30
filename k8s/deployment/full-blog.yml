@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: full-blog
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: full-blog
+    spec:
+      containers:
+      - name: full-blog-db
+        image: mysql:5.7
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: root
+        ports:
+          - name: full-db-port
+            containerPort: 3306
+          
+      - name: full-blog-wp
+        image: wordpress:php7.0
+        env:
+          - name: WORDPRESS_DB_USER
+            value: root
+          - name: WORDPRESS_DB_PASSWORD
+            value: root
+          - name: WORDPRESS_DB_HOST
+            value: 127.0.0.1          
+        ports:
+          - name: full-wp-port
+            containerPort: 80          
+          
