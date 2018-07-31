@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: wp-blog
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: wp-blog
+    spec:
+      containers:
+      - name: wp-blog
+        image: wordpress:php7.0
+        env:
+          - name: WORDPRESS_DB_USER
+            value: root
+          - name: WORDPRESS_DB_PASSWORD
+            value: root
+          - name: WORDPRESS_DB_HOST
+            value: db-blog-svc:8888          
+        ports:
+          - name: wp-port
+            containerPort: 80   
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: wp-blog-svc
+spec:
+  ports:
+  - name: p1
+    port: 8888
+    nodePort: 31003
+    targetPort: wp-port
+    protocol: TCP
+
+  selector:
+    app: wp-blog
+  type: NodePort            
+          
