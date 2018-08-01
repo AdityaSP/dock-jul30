@@ -13,3 +13,8 @@ docker run -it -v //var/lib/localkube/certs:/export frapsoft/openssl x509 -req -
 kubectl config set-credentials user1 --client-certificate="C:\Users\Dell lap\.minikube\user1.crt" --client-key="C:\Users\Dell lap\.minikube\user1.key"
 
 kubectl config set-context user1 --cluster=minikube --user user1
+
+
+# to enable RBAC
+minikube stop
+minikube start --extra-config=apiserver.Authorization.Mode=RBAC
