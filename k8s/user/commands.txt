@@ -1,0 +1,7 @@
+sudo apt install openssl
+
+openssl genrsa -out aditya.pem 2048
+
+openssl req -new -key aditya.pem -out aditya-csr.pem -subj "/CN=aditya/O=myteam/"
+
+openssl x509 -req -in /export/aditya-csr.pem -CA /export/ca.crt -CAkey ca.key -CAcreateserial -out /export/aditya.crt -days 10000
