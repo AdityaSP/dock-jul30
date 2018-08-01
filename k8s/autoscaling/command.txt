@@ -1,0 +1,5 @@
+#run this from a different shell
+kubectl run -i --tty mydep --image nginx sh
+
+# from with in the sh termincal. Get the cluster ip address of service
+while true; do wget -q -O- 10.100.76.159:31999; done
