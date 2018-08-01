@@ -1,0 +1,5 @@
+1. create using resourcequota.yml
+2. create using helloworld-no-quotas.yml
+3. craete using defaults.yml
+4. create using helloworld-no-quotas.yml
+5. create using helloworld-with-quotas.yml
